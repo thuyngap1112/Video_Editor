@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<style>
+#div1 {
+    position: absolute;
+    top: 66px;
+    left: 596px;
+    background-color: #000;
+    width: 531px;
+    height: 280px;
+}
+#drag1 {
+
+}
+</style>
+<script>
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+function drag(ev) {
+  ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("text");
+  ev.target.appendChild(document.getElementById(data));
+}
+</script>
+</head>
+<body>
+
+<p>Drag the W3Schools image into the rectangle:</p>
+<div class="video-editor-3-item" id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+<br>
+<!-- <img id="drag1" src="D:/video1.mp4" draggable="true" ondragstart="drag(event)" width="336" height="69"> -->
+<video class="video-upload_play" id="drag1"> 
+    <source src="D:/video1.mp4" type="video/mp4">
+</video>
+</body>
+</html>
+

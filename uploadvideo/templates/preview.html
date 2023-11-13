@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+
+    <link rel="stylesheet" href="static/css/global.css" />
+    <link rel="stylesheet" href="static/css/index.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+      #div1 {
+        position: absolute;
+        top: 66px;
+        left: 596px;
+        background-color: #000;
+        width: 531px;
+        height: 280px;
+      }
+      </style>
+  </head>
+  <body>
+    <script>
+      function allowDrop(ev) {
+        ev.preventDefault();
+      }
+      
+      function drag(ev) {
+        ev.dataTransfer.setData("text", ev.target.id);
+      }
+      
+      function drop(ev) {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("text");
+        ev.target.appendChild(document.getElementById(data));
+      }
+      </script>
+
+    <div class="video-editor-3">
+      <div class="video-editor-3-child"></div>
+      <div class="export">Export</div>
+      <div class="home-wrapper" id="frameContainer">
+        <div class="home">Home</div>
+      </div>
+      <div class="video-editor-3-item" id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="rectangle-parent" id="drag1" draggable="true" ondragstart="drag(event)">
+        <img class="video-upload_thumb" src="static/images/thumb2.png" alt="thumb"/>
+        <video class="video-upload_play" style="display:none;" muted> 
+            <source src="{{ url_for('static', filename = 'video/' +video_name) }}" type="video/mp4">
+        </video>
+      </div>
+      <div class="add-3-parent">
+        <img class="add-3-icon" alt="" src="static/images/add-3@2x.png"/>
+
+        <div class="text">Text</div>
+      </div>
+      <div class="visual-effects">Visual Effects</div>
+      <div class="video-editor-3-inner"></div>
+      <div class="rectangle-group">
+        <div class="group-inner"></div>
+        <img
+          class="down-arrow-3-icon"
+          alt=""
+          src="static/images/downarrow-3@2x.png"
+        />
+
+        <img
+          class="down-arrow-4-icon"
+          alt=""
+          src="static/images/downarrow-4@2x.png"
+        />
+      </div>
+      <div class="rectangle-div"></div>
+      <div class="properties">Properties</div>
+      <img class="settings-1-icon" alt="" src="static/images/settings-1@2x.png" />
+
+      <div class="add-media-to">
+        Add media to timeline to start creating video
+      </div>
+      <img class="right-1-icon" alt="" src="static/images/right-1@2x.png" />
+
+      <img class="right-2-icon" alt="" src="static/images/right-2@2x.png" />
+
+      <img class="play-1-icon" alt="" src="static/images/play-1@2x.png" />
+    </div>
+
+    <script>
+      var frameContainer = document.getElementById("frameContainer");
+      if (frameContainer) {
+        frameContainer.addEventListener("click", function (e) {
+          // Please sync "Index" to the project
+        });
+      }
+
+      $(document).ready(function(){
+        
+        $('.video-upload_thumb').mouseenter(function() {
+          $('.video-upload_play').css('display','block');
+          $('.video-upload_play')[0].play();
+        })
+
+        $('.video-upload_play').mouseleave(function(){
+          $(this).css('display','none');
+          $(this)[0].load();
+        })
+        
+      })
+      </script> 
+  </body>
+</html>
