@@ -1,7 +1,8 @@
 # UPLOAD VIDEO
 # Download and Installation
  - For Python 3.9: https://www.python.org/downloads/release/python-397/
- - Make sure to install moviepy first: pip install flask
+ - Make sure to install moviepy first: pip install moviepy
+ - Install Flask: pip install flask
 # Install environment
  - virtualenv env
 
